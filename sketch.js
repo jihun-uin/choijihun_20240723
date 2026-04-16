@@ -68,7 +68,7 @@ function setup(){
 
 function draw(){
   background(220);
-
+  color(2);
   stroke(255,0,0);
   strokeWeight(4);
   line(wallX, 0, wallX, height);
