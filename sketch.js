@@ -1,9 +1,16 @@
 let px, py;          
 let pd = 30;          
 let x = 50;
-let y = 200;
-let wallX = 300;
+let y = 350;
+let wallX = 900;
 let wx = 200, wy = 150, ww = 50, wh = 100;
+let map;
+
+let wall = 
+{
+  {},
+  {}
+};
 
 let dx = [100, 200, 300, 400, 500]; 
 let dy = [150, 250, 100, 300, 200]; 
@@ -62,16 +69,21 @@ function movePlayer(nx, ny) {
   }
 }
 
+function preload()
+{
+  map = loadImage("Map.png");
+}
 function setup(){
-  createCanvas(600,400);
+  createCanvas(1000,700);
 }
 
 function draw(){
-  background(220);
+  background(map);
   color(2);
   stroke(255,0,0);
   strokeWeight(4);
-  line(wallX, 0, wallX, height);
+
+
   if (keyIsDown(RIGHT_ARROW)) {
     if (x + 25 < wallX) {
       noStroke();
