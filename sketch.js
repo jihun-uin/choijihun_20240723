@@ -2,15 +2,14 @@ let px, py;
 let pd = 30;          
 let x = 50;
 let y = 350;
-let wallX = 900;
+let walls =
+[
+  {x: 0, y: 300}
+]
 let wx = 200, wy = 150, ww = 50, wh = 100;
 let map;
 
-let wall = 
-{
-  {},
-  {}
-};
+/*
 
 let dx = [100, 200, 300, 400, 500]; 
 let dy = [150, 250, 100, 300, 200]; 
@@ -19,7 +18,7 @@ let dActive = [true, true, true, true, true];
 
 let score = 0;
 
-/*
+
 function setup() {
   createCanvas(600, 400);
   px = width / 2;
@@ -85,7 +84,7 @@ function draw(){
 
 
   if (keyIsDown(RIGHT_ARROW)) {
-    if (x + 25 < wallX) {
+    if (x + 25 < 700&& x<) {
       noStroke();
       fill(255, 255, 0);
       ellipse(x, y, 50, 50);
