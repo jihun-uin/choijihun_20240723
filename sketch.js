@@ -2,10 +2,6 @@ let px, py;
 let pd = 30;          
 let x = 50;
 let y = 350;
-let walls =
-[
-  {x: 0, y: 300}
-]
 let wx = 200, wy = 150, ww = 50, wh = 100;
 let map;
 
@@ -72,8 +68,19 @@ function preload()
 {
   map = loadImage("Map.png");
 }
+
 function setup(){
   createCanvas(1000,700);
+}
+
+function canMove(nx, ny) {
+  if (nx < 0 || nx > width || ny < 0 || ny > height) {
+    return false;
+  }
+  if(ny == 350 && nx<0)
+  {
+    movePlayer(1000,350);
+  }
 }
 
 function draw(){
@@ -84,7 +91,7 @@ function draw(){
 
 
   if (keyIsDown(RIGHT_ARROW)) {
-    if (x + 25 < 700&& x<) {
+    if (canMove(x + 5, y)) {
       noStroke();
       fill(255, 255, 0);
       ellipse(x, y, 50, 50);
@@ -93,7 +100,7 @@ function draw(){
   }
 
   if (keyIsDown(LEFT_ARROW)) {
-     if (x > 0) {
+     if (canMove(x - 5, y)) {
       noStroke();
       fill(255, 255, 0);
       ellipse(x, y, 50, 50);
@@ -102,7 +109,7 @@ function draw(){
   }
 
   if (keyIsDown(UP_ARROW)) {
-     if (y > 0) {
+     if (canMove(x, y - 5)) {
       noStroke();
       fill(255, 255, 0);
       ellipse(x, y, 50, 50);
@@ -111,7 +118,7 @@ function draw(){
   }
 
   if (keyIsDown(DOWN_ARROW)) {
-     if (y < 360) {
+     if (canMove(x, y + 5)) {
       noStroke();
       fill(255, 255, 0);
       ellipse(x, y, 50, 50);
