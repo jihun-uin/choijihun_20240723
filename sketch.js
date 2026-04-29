@@ -36,6 +36,7 @@ function preload()
 
 function setup(){
   createCanvas(1000,700);
+  makedot();
 }
 
 function canMove(nx, ny) {
@@ -126,29 +127,41 @@ function movePacman()
   arc(x,y,45,45,PI/4,1.7*PI);
 }
 
-function drawDot()
+function makedot()
 {
   for(let i=80; i<250; i+=40)
+    {
+      dots.push({x: i, y: 350});
+    }
+  for(let i=50; i<600; i+=40)
+  {
+      dots.push({x: 230, y: i});
+  }  
+  for(let i=780; i<980; i+=40)
   {
     dots.push({x: i, y: 350});
   }
   for(let i=50; i<600; i+=40)
   {
-    dots.push({x: 230, y:i});
-  }
-
-  fill(255);
-  noStroke();
-
-  for(let d of dots)
-  {
-    ellipse(d.x, d.y, 10, 10);
+    dots.push({x: 770, y: i});
   }
 }
 
-function scoreCount()
+function drawDot()
 {
-  
+  fill(255);
+  noStroke();
+
+  for(let i = dots.length - 1; i >= 0; i--)
+  {
+    let d = dots[i];
+    ellipse(d.x, d.y, 10, 10);
+    if(dist(x, y, d.x, d.y) < 25
+    ){
+      dots.splice(i, 1);
+      score += 1;
+    }
+  }
 }
 
 function draw(){
